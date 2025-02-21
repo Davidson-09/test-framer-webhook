@@ -1,9 +1,11 @@
 import * as express from 'express';
 import { Request, Response } from 'express'
 import * as bodyParser from 'body-parser';
+import * as cors from 'cors'
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.use(cors({ origin: "https://vibrant-clicks-492859.framer.app" }));
 
 // Middleware to parse JSON and URL-encoded data
 app.use(bodyParser.json());
