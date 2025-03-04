@@ -47,6 +47,13 @@
   resolved "https://registry.npmjs.org/@tsconfig/node16/-/node16-1.0.4.tgz"
   integrity sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==
 
+"@types/airtable@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.npmjs.org/@types/airtable/-/airtable-0.10.0.tgz"
+  integrity sha512-2Orqzyk9mqNkeCF0jL4JWZkXQDUkq7RDhCnptt9vKo8ZSDDFUYU8uylPD0NJKj95FyCbiFkreRmd6f/T9ci5eg==
+  dependencies:
+    airtable "*"
+
 "@types/body-parser@*", "@types/body-parser@^1.19.5":
   version "1.19.5"
   resolved "https://registry.npmjs.org/@types/body-parser/-/body-parser-1.19.5.tgz"
@@ -170,7 +177,7 @@ acorn@^8.11.0, acorn@^8.4.1:
   resolved "https://registry.npmjs.org/acorn/-/acorn-8.14.0.tgz"
   integrity sha512-cl669nCJTZBsL97OF4kUQm5g5hC2uihk0NxY3WENAC0TYdILVkAyHymAntgxGkl7K+t0cXIrH5siy5S4XkFycA==
 
-airtable@^0.12.2:
+airtable@*, airtable@^0.12.2:
   version "0.12.2"
   resolved "https://registry.npmjs.org/airtable/-/airtable-0.12.2.tgz"
   integrity sha512-HS3VytUBTKj8A0vPl7DDr5p/w3IOGv6RXL0fv7eczOWAtj9Xe8ri4TAiZRXoOyo+Z/COADCj+oARFenbxhmkIg==

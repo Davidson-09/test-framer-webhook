@@ -3,7 +3,7 @@ import { Request, Response } from 'express'
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors'
 require('dotenv').config();
-import Airtable = require('airtable');
+import * as Airtable from 'airtable'
 
 console.log('the key', process.env.AIRTABLE_KEY)
 
