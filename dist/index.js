@@ -19,7 +19,7 @@ Airtable.configure({ apiKey: process.env.AIRTABLE_KEY, endpointUrl: 'https://api
 const venueHouseBase = Airtable.base('app0bMO8gPe4LCRL0');
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.use(cors({ origin: "https://vibrant-clicks-492859.framer.app" }));
+app.use(cors({ origin: "https://venuehouse.framer.website" }));
 // Middleware to parse JSON and URL-encoded data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
