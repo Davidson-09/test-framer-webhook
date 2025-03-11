@@ -70,7 +70,6 @@ app.get('/api/usercanupload/enhanced/:email', async (req, res) => {
 
 app.get('/api/usercanupload/exclusive/:email', async (req, res) => {
     const email = req.params.email;
-    // check the plan the particular email is subscribed to
     try {
         const maxPosts = 5
         let postCount = 0
