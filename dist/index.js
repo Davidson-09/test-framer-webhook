@@ -30,11 +30,54 @@ app.post('/webhook', (req, res) => {
     // Process the form data here
     res.status(200).json({ message: 'Webhook received successfully', data: formData });
 });
-app.get('/api/usercanupload/:email', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.get('/api/essential/usercanupload/:email', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const email = req.params.email;
+    // check the plan the particular email is subscribed to
+    try {
+        const maxPosts = 1;
+        let postCount = 0;
+        yield venueHouseBase('Venue House').select({
+            filterByFormula: `{email} = '${email}'`,
+        }).firstPage(function (err, records) {
+            return __awaiter(this, void 0, void 0, function* () {
+                if (err) {
+                    throw new Error(err);
+                }
+                postCount = records === null || records === void 0 ? void 0 : records.length;
+                res.status(200).json({ message: 'email checked', canUpload: postCount < maxPosts });
+            });
+        });
+    }
+    catch (e) {
+        res.status(500).json({ message: JSON.stringify(e, null, 3) });
+    }
+}));
+app.get('/api/enhanced/usercanupload/:email', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const email = req.params.email;
     // check the plan the particular email is subscribed to
     try {
         const maxPosts = 3;
+        let postCount = 0;
+        yield venueHouseBase('Venue House').select({
+            filterByFormula: `{email} = '${email}'`,
+        }).firstPage(function (err, records) {
+            return __awaiter(this, void 0, void 0, function* () {
+                if (err) {
+                    throw new Error(err);
+                }
+                postCount = records === null || records === void 0 ? void 0 : records.length;
+                res.status(200).json({ message: 'email checked', canUpload: postCount < maxPosts });
+            });
+        });
+    }
+    catch (e) {
+        res.status(500).json({ message: JSON.stringify(e, null, 3) });
+    }
+}));
+app.get('/api/exclusive/usercanupload/:email', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const email = req.params.email;
+    try {
+        const maxPosts = 5;
         let postCount = 0;
         yield venueHouseBase('Venue House').select({
             filterByFormula: `{email} = '${email}'`,
