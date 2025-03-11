@@ -28,7 +28,27 @@ app.post('/webhook', (req: Request, res: Response) => {
     res.status(200).json({ message: 'Webhook received successfully', data: formData });
 });
 
-app.get('/api/usercanupload/:email', async (req, res) => {
+app.get('/api/usercanupload/essential/:email', async (req, res) => {
+    const email = req.params.email;
+    // check the plan the particular email is subscribed to
+    try {
+        const maxPosts = 1
+        let postCount = 0
+        await venueHouseBase('Venue House').select({
+            filterByFormula: `{email} = '${email}'`,
+        }).firstPage(async function (err:any, records:any) {
+            if (err) {
+                throw new Error(err)
+            }
+            postCount = records?.length
+            res.status(200).json({ message: 'email checked', canUpload: postCount < maxPosts});
+        })
+    } catch (e){
+        res.status(500).json({ message: JSON.stringify(e, null, 3)});
+    }
+});
+
+app.get('/api/usercanupload/enhanced/:email', async (req, res) => {
     const email = req.params.email;
     // check the plan the particular email is subscribed to
     try {
@@ -46,8 +66,26 @@ app.get('/api/usercanupload/:email', async (req, res) => {
     } catch (e){
         res.status(500).json({ message: JSON.stringify(e, null, 3)});
     }
+});
 
-    
+app.get('/api/usercanupload/exclusive/:email', async (req, res) => {
+    const email = req.params.email;
+    // check the plan the particular email is subscribed to
+    try {
+        const maxPosts = 5
+        let postCount = 0
+        await venueHouseBase('Venue House').select({
+            filterByFormula: `{email} = '${email}'`,
+        }).firstPage(async function (err:any, records:any) {
+            if (err) {
+                throw new Error(err)
+            }
+            postCount = records?.length
+            res.status(200).json({ message: 'email checked', canUpload: postCount < maxPosts});
+        })
+    } catch (e){
+        res.status(500).json({ message: JSON.stringify(e, null, 3)});
+    }
 });
 
 app.listen(PORT, () => {
