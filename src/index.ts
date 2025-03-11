@@ -28,7 +28,7 @@ app.post('/webhook', (req: Request, res: Response) => {
     res.status(200).json({ message: 'Webhook received successfully', data: formData });
 });
 
-app.get('/api/usercanupload/essential/:email', async (req, res) => {
+app.get('/api/essential/usercanupload/:email', async (req, res) => {
     const email = req.params.email;
     // check the plan the particular email is subscribed to
     try {
@@ -48,7 +48,7 @@ app.get('/api/usercanupload/essential/:email', async (req, res) => {
     }
 });
 
-app.get('/api/usercanupload/enhanced/:email', async (req, res) => {
+app.get('/api/enhanced/usercanupload/:email', async (req, res) => {
     const email = req.params.email;
     // check the plan the particular email is subscribed to
     try {
@@ -68,7 +68,7 @@ app.get('/api/usercanupload/enhanced/:email', async (req, res) => {
     }
 });
 
-app.get('/api/usercanupload/exclusive/:email', async (req, res) => {
+app.get('/api/exclusive/usercanupload/:email', async (req, res) => {
     const email = req.params.email;
     try {
         const maxPosts = 5
