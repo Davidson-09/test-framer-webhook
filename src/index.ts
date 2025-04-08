@@ -5,14 +5,12 @@ import * as cors from 'cors'
 require('dotenv').config();
 import * as Airtable from 'airtable'
 
-console.log('the key', process.env.AIRTABLE_KEY)
-
 Airtable.configure({ apiKey: process.env.AIRTABLE_KEY, endpointUrl: 'https://api.airtable.com' });
 const venueHouseBase = Airtable.base('app0bMO8gPe4LCRL0');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.use(cors({ origin: "https://venuehouse.framer.website" }));
+app.use(cors({ origin: "https://venuehouse.co/" }));
 
 // Middleware to parse JSON and URL-encoded data
 app.use(bodyParser.json());
